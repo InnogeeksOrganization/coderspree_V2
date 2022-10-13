@@ -7,7 +7,7 @@ import requests
 
 home = os.path.abspath(Path(__file__).parent)
 
-submission_architecture = {"GettingStarted": 5,"Patterns": 6}
+submission_architecture = {"GettingStarted": 5, "Patterns": 6, "FunctionAndArrays": 5, "2DArrays": 5}
 
 domains = ["AR-VR", "IOT", "ML", "Android", "Web"]
 
@@ -75,20 +75,17 @@ def check_structure(path, student: Student):
 
 def write_to_readme(filename, students_list):
 
-    mdFile = MdUtils(file_name=filename, title="Welcome to Coderspree2.0 🔥")
-#     ![Innogeeks Logo](https://user-images.githubusercontent.com/33064931/193105033-d03aa2e9-d4c3-4d02-b33e-466f3c567f39.png)
-    mdFile.new_paragraph("## **This is a club only repo, limited only to members of Innogeeks.**")
-    mdFile.new_line("<p align = 'center'><a href='https://innogeeks.in/' target='_blank'><img src='https://user-images.githubusercontent.com/33064931/193105033-d03aa2e9-d4c3-4d02-b33e-466f3c567f39.png' href='www.innogeeks.com'></a></p>")
+    mdFile = MdUtils(file_name=filename, title="Coderspree")
 
     mdFile.new_paragraph(
         mdFile.new_inline_image(
-            text="Status Badge",
+            text="Status badge",
             path="https://github.com/InnogeeksOrganization/coderspree/actions/workflows/checkSubmission.yml/badge.svg",
         )
     )
     mdFile.new_line()
-    
-    mdFile.new_paragraph("**Please visit the [Guide](./Guide/README.md)**")
+
+    mdFile.new_paragraph("Please visit the [Guide](./Guide/README.md)")
 
     mdFile.new_line()
 
@@ -141,7 +138,7 @@ def write_to_readme(filename, students_list):
 
 def write_to_pendingReadme(filename, students_list):
 
-    mdFile = MdUtils(file_name=filename, title="Welcome to Coderspree2.0 🔥")
+    mdFile = MdUtils(file_name=filename, title="Coderspree")
 
     list_of_strings = ["Profile", "Name", "Domain", "Solved", "Year", "logs"]
 
@@ -190,16 +187,16 @@ for domain in domains:
         libId = "Invalid Foldername"
         githubid = "Invalid Foldername"
         try:
-            [githubid, name, libId, year] = filename.split("_")
+            [githubid, name, lidID, year] = filename.split("_")
         except ValueError:
             print(filename, "is not correct")
         if name == "Invalid Foldername":
             try:
-                [githubid, name, libId] = filename.split("_")
+                [githubid, name, lidID] = filename.split("_")
             except ValueError:
                 print(filename, "is not correct")
 
-        student = Student(name, githubid, libId, domain, year)
+        student = Student(name, githubid, lidID, domain, year)
         check_structure(os.path.join(home, os.path.join(domain, filename)), student)
         if student.completed:
             completed_student_list.append(student)
