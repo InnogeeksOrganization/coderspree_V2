@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any, List
 from mdutils.mdutils import MdUtils
 import requests
+import sys
 
 
 home = os.path.abspath(Path(__file__).parent)
@@ -190,10 +191,13 @@ for domain in domains:
             [githubid, name, lidID, year] = filename.split("_")
         except ValueError:
             print(filename, "is not correct")
+            sys.exit()
         if name == "Invalid Foldername":
             try:
                 [githubid, name, lidID] = filename.split("_")
             except ValueError:
+                print(filename, "is not correct")
+                sys.exit()
                 print(filename, "is not correct")
 
         student = Student(name, githubid, lidID, domain, year)
