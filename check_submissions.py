@@ -7,7 +7,7 @@ import requests
 
 home = os.path.abspath(Path(__file__).parent)
 
-submission_architecture = {"GettingStarted": 5, "Patterns": 6, "FunctionAndArrays": 5, "2DArrays": 5}
+submission_architecture = {"GettingStarted": 5}
 
 domains = ["AR-VR", "IOT", "ML", "Android", "Web"]
 
@@ -189,7 +189,7 @@ for domain in domains:
         try:
             [githubid, name, lidID, year] = filename.split("_")
         except ValueError:
-            print(filename, "is not correct")
+            print(filename, "is not correct1")
         if name == "Invalid Foldername":
             try:
                 [githubid, name, lidID] = filename.split("_")
