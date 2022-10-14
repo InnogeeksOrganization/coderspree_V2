@@ -190,15 +190,14 @@ for domain in domains:
         try:
             [githubid, name, lidID, year] = filename.split("_")
         except ValueError:
-            print(filename, "is not correct")
-            sys.exit()
+            # print(filename, "is not correct")
+            raise ValueError(filename, "is not correct")
         if name == "Invalid Foldername":
             try:
                 [githubid, name, lidID] = filename.split("_")
             except ValueError:
-                print(filename, "is not correct")
-                sys.exit()
-                print(filename, "is not correct")
+                # print(filename, "is not correct")
+                raise ValueError(filename, "is not correct")
 
         student = Student(name, githubid, lidID, domain, year)
         check_structure(os.path.join(home, os.path.join(domain, filename)), student)
