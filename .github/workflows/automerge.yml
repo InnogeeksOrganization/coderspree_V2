@@ -1,15 +1,16 @@
-name: Auto-Merge
+name: Enable automerge on dependabot PRs
+
 on:
+  # See note below about using pull_request_target
   pull_request_target:
-    types: [labeled]
 
 jobs:
-  enable-auto-merge:
+  automerge:
+    name: Enable automerge on dependabot PRs
     runs-on: ubuntu-latest
-
-    # Specifically check that dependabot (or another trusted party) created this pull-request, and that it has been labelled correctly.
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'dependencies')
     steps:
-    - uses: alexwilson/enable-github-automerge-action@main
-      with:
-        github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Enable automerge on dependabot PRs
+        uses: daneden/enable-automerge-action@v1
+        with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          merge-method: MERGE
