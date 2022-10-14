@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-    build:
+    checksubmission:
         strategy:
             matrix:
                 os: [ubuntu-latest]
