@@ -73,12 +73,12 @@ for domain in domains:
         try:
             [githubid, name, libId, year] = filename.split("_")
         except ValueError:
-            print(filename, "is not correct")
+            raise ValueError(filename, "is not correct")
         if name == "Invalid Foldername":
             try:
                 [githubid, name, libId] = filename.split("_")
             except ValueError:
-                print(filename, "is not correct")
+                raise ValueError(filename, "is not correct")
 
         student = Student(name, githubid, libId, domain, year)
         check_structure(os.path.join(home, os.path.join(domain, filename)), student)
